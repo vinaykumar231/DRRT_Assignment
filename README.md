@@ -3,6 +3,7 @@
 ## Overview
 
 This project provides a **Python-based transaction calculator** for securities such as **Twitter** and **Kraft Heinz**. It reads investor transaction data from Excel, applies **FIFO (First-In, First-Out)** accounting, and calculates **realized profit/loss**, which serves as the foundation for **securities class action settlement loss calculations**.
+![Uploading Screenshot 2026-01-13 at 3.25.57 AM.png…]()
 
 This tool is designed to support:
 
