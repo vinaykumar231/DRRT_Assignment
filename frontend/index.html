@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Settlement Calculator | Recognized Loss Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">LC</div>
+                <div class="logo-text">
+                    <h1>Loss<span>Calculator</span></h1>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Recognized Loss <span>Calculator</span></h2>
+            <p>Professional-grade settlement calculator for accurate loss calculations. Streamline your claims process with precision and speed.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="startCalculationBtn">
+                    <i class="fas fa-calculator"></i>
+                    Start Calculation
+                </button>
+                <button class="btn btn-secondary" id="viewDocsBtn">
+                    <i class="fas fa-book"></i>
+                    View Documentation
+                </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Settlements Supported</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Calculation Accuracy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">&lt;1s</div>
+                    <div class="stat-label">Processing Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Settlement Selection Section -->
+        <section class="settlement-section" id="settlementSection">
+            <div class="section-header">
+                <h2>Select Settlement Case</h2>
+                <p>Choose one of the supported settlements to begin your recognized loss calculation</p>
+            </div>
+            
+            <div class="settlement-grid">
+                <!-- Twitter Settlement Card -->
+                <div class="settlement-card twitter selected" id="twitterSettlement" data-settlement="twitter">
+                    <div class="settlement-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter Inc.</h3>
+                    <div class="settlement-type">Securities Litigation</div>
+                    
+                    <div class="settlement-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Class Period</span>
+                            <span class="detail-value">Feb 6 - Jul 28, 2015</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Filing Deadline</span>
+                            <span class="detail-value">October 14, 2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="settlement-amount">$809.5M</div>
+                    
+                    <div class="status-badge">Active</div>
+                </div>
+                
+                <!-- Kraft Heinz Settlement Card -->
+                <div class="settlement-card kraft" id="kraftSettlement" data-settlement="kraft">
+                    <div class="settlement-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Kraft Heinz</h3>
+                    <div class="settlement-type">Securities Litigation</div>
+                    
+                    <div class="settlement-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Class Period</span>
+                            <span class="detail-value">Nov 6, 2015 - Aug 7, 2019</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Filing Deadline</span>
+                            <span class="detail-value">December 31, 2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="settlement-amount">$450.0M</div>
+                    
+                    <div class="status-badge">Active</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Entry Section -->
+        <section class="data-entry-section" id="dataEntrySection">
+            <h2 class="section-title">Enter Transaction Data</h2>
+            
+            <div class="tabs">
+                <button class="tab active" id="uploadTabBtn" data-tab="upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    File Upload
+                </button>
+                <button class="tab" id="manualTabBtn" data-tab="manual">
+                    <i class="fas fa-keyboard"></i>
+                    Manual Entry
+                </button>
+            </div>
+            
+            <!-- File Upload Tab -->
+            <div class="tab-content active" id="uploadTab">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Upload Transaction Data</h4>
+                    <p>Drag and drop your Excel or CSV file here, or click to browse</p>
+                    
+                    <div class="upload-btn" id="browseBtn">
+                        <i class="fas fa-folder-open"></i>
+                        Browse Files
+                    </div>
+                    
+                    <div class="columns-list">
+                        <h5>Expected Columns:</h5>
+                        <div class="columns-grid">
+                            <div class="column-item">Entity Name</div>
+                            <div class="column-item">Fund Name</div>
+                            <div class="column-item">Trade Date</div>
+                            <div class="column-item">Transaction Type</div>
+                            <div class="column-item">Quantity</div>
+                            <div class="column-item">Price</div>
+                            <div class="column-item">Gross Amount</div>
+                            <div class="column-item">Settlement Date</div>
+                            <div class="column-item">Security ID</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" style="display: none;">
+                
+                <button class="btn btn-primary calculate-btn" id="calculateBtn">
+                    <i class="fas fa-calculator"></i>
+                    Calculate Recognized Losses
+                </button>
+            </div>
+            
+            <!-- Manual Entry Tab -->
+            <div class="tab-content" id="manualTab">
+                <div class="manual-entry">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="entityName">Entity Name</label>
+                            <input type="text" id="entityName" placeholder="Enter entity name">
+                        </div>
+                        <div class="form-group">
+                            <label for="fundName">Fund Name</label>
+                            <input type="text" id="fundName" placeholder="Enter fund name">
+                        </div>
+                        <div class="form-group">
+                            <label for="tradeDate">Trade Date</label>
+                            <input type="date" id="tradeDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="transactionType">Transaction Type</label>
+                            <select id="transactionType">
+                                <option value="">Select type</option>
+                                <option value="BUY">Buy</option>
+                                <option value="SELL">Sell</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" placeholder="Enter quantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price per Share ($)</label>
+                            <input type="number" id="price" placeholder="Enter price" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <div class="manual-controls">
+                        <button class="btn btn-secondary" id="addTransactionBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Transaction
+                        </button>
+                        <button class="btn btn-primary" id="calculateManualBtn">
+                            <i class="fas fa-calculator"></i>
+                            Calculate from Manual Data
+                        </button>
+                    </div>
+                    
+                    <div class="transactions-table" id="transactionsTable">
+                        <div class="table-header">
+                            <div class="table-cell">Entity</div>
+                            <div class="table-cell">Fund</div>
+                            <div class="table-cell">Date</div>
+                            <div class="table-cell">Type</div>
+                            <div class="table-cell">Quantity</div>
+                            <div class="table-cell">Price</div>
+                            <div class="table-cell">Actions</div>
+                        </div>
+                        <div class="table-body" id="tableBody">
+                            <!-- Transactions will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (Hidden by default) -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="section-header">
+                <h2>Calculation Results</h2>
+                <p>Detailed breakdown of recognized losses for your settlement claim</p>
+            </div>
+            
+            <!-- Results Tabs -->
+            <div class="results-tabs">
+                <div class="tabs">
+                    <button class="tab active" id="resultsTabBtn" data-tab="results">
+                        <i class="fas fa-chart-bar"></i>
+                        Results
+                    </button>
+                    <button class="tab" id="previewTabBtn" data-tab="preview">
+                        <i class="fas fa-table"></i>
+                        Data Preview
+                    </button>
+                    <button class="tab" id="reportTabBtn" data-tab="report">
+                        <i class="fas fa-file-alt"></i>
+                        Detailed Report
+                    </button>
+                    <button class="tab" id="statsTabBtn" data-tab="stats">
+                        <i class="fas fa-chart-pie"></i>
+                        Statistics
+                    </button>
+                </div>
+                
+                <!-- Results Tab Content -->
+                <div class="tab-content active" id="resultsTabContent">
+                    <div class="results-summary" id="resultsSummary">
+                        <!-- Results will be populated here -->
+                    </div>
+                    
+                    <!-- Client Breakdown -->
+                    <div class="results-breakdown">
+                        <h3><i class="fas fa-users"></i> Client Breakdown</h3>
+                        <div class="breakdown-grid" id="clientBreakdown">
+                            <!-- Client breakdown will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Fund Breakdown -->
+                    <div class="results-breakdown">
+                        <h3><i class="fas fa-piggy-bank"></i> Fund Breakdown</h3>
+                        <div class="breakdown-grid" id="fundBreakdown">
+                            <!-- Fund breakdown will be populated here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Preview Tab Content -->
+                <div class="tab-content" id="previewTabContent">
+                    <div class="data-preview-container">
+                        <div class="preview-header">
+                            <h3><i class="fas fa-table"></i> Transaction Data Preview</h3>
+                            <div class="preview-info">
+                                <span id="totalTransactions">0 transactions loaded</span>
+                                <span id="previewRange">Showing 1-10</span>
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Entity</th>
+                                        <th>Fund</th>
+                                        <th>Trade Date</th>
+                                        <th>Type</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataTableBody">
+                                    <!-- Data rows will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-pagination" id="tablePagination">
+                            <!-- Pagination controls -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detailed Report Tab Content -->
+                <div class="tab-content" id="reportTabContent">
+                    <div class="detailed-report">
+                        <div class="report-header">
+                            <h3><i class="fas fa-file-alt"></i> Detailed Calculation Report</h3>
+                            <button class="btn btn-secondary" id="exportReportBtn">
+                                <i class="fas fa-download"></i>
+                                Export Report
+                            </button>
+                        </div>
+                        
+                        <div class="report-section">
+                            <h4><i class="fas fa-info-circle"></i> Calculation Summary</h4>
+                            <div class="report-grid" id="reportSummary">
+                                <!-- Report summary will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="report-section">
+                            <h4><i class="fas fa-calculator"></i> Calculation Methodology</h4>
+                            <div class="methodology" id="calculationMethodology">
+                                <!-- Methodology will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="report-section">
+                            <h4><i class="fas fa-balance-scale"></i> Settlement Rules Applied</h4>
+                            <div class="rules-grid" id="rulesApplied">
+                                <!-- Rules will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Statistics Tab Content -->
+                <div class="tab-content" id="statsTabContent">
+                    <div class="statistics-container">
+                        <div class="stats-header">
+                            <h3><i class="fas fa-chart-pie"></i> Calculation Statistics</h3>
+                        </div>
+                        
+                        <div class="stats-overview">
+                            <div class="stat-card-large">
+                                <div class="stat-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="stat-number" id="totalLossStat">$0.00</div>
+                                    <div class="stat-label">Total Recognized Loss</div>
+                                </div>
+                            </div>
+                            
+                            <div class="stats-grid-small">
+                                <div class="stat-small">
+                                    <div class="stat-number" id="transactionCount">0</div>
+                                    <div class="stat-label">Transactions</div>
+                                </div>
+                                <div class="stat-small">
+                                    <div class="stat-number" id="avgLossPerShare">$0.00</div>
+                                    <div class="stat-label">Avg Loss/Share</div>
+                                </div>
+                                <div class="stat-small">
+                                    <div class="stat-number" id="successRate">100%</div>
+                                    <div class="stat-label">Success Rate</div>
+                                </div>
+                                <div class="stat-small">
+                                    <div class="stat-number" id="processingTime">0ms</div>
+                                    <div class="stat-label">Processing Time</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="charts-container">
+                            <div class="chart-card">
+                                <h4><i class="fas fa-chart-bar"></i> Loss Distribution by Client</h4>
+                                <div class="chart-placeholder" id="clientDistributionChart">
+                                    <!-- Chart will be rendered here -->
+                                    <div class="chart-bars" id="clientChartBars">
+                                        <!-- Bar chart will be created here -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-card">
+                                <h4><i class="fas fa-chart-pie"></i> Transaction Type Distribution</h4>
+                                <div class="chart-placeholder" id="transactionTypeChart">
+                                    <!-- Pie chart will be rendered here -->
+                                    <div class="pie-chart" id="transactionPieChart">
+                                        <!-- Pie chart will be created here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-table-container">
+                            <h4><i class="fas fa-list-ol"></i> Detailed Statistics</h4>
+                            <table class="stats-table" id="detailedStatsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detailedStatsBody">
+                                    <!-- Detailed stats will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-actions">
+                <button class="btn btn-primary" id="downloadResultsBtn">
+                    <i class="fas fa-download"></i>
+                    Download Full Report
+                </button>
+                <button class="btn btn-secondary" id="newCalculationBtn">
+                    <i class="fas fa-redo"></i>
+                    New Calculation
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">LC</div>
+                    <h4>LossCalculator</h4>
+                </div>
+                <p class="footer-text">Professional settlement calculation software for accurate loss assessments in securities litigation.</p>
+                <div class="security-badges">
+                    <div class="security-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>256-bit SSL</span>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>GDPR Compliant</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> API Reference</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Settlement Rules</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Data Processing</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Security</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 LossCalculator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="cal.js"></script>
+</body>
+</html>
