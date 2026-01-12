@@ -1,9 +1,3 @@
-"""
-Securities Settlement Loss Calculator - Complete Production Implementation
-Calculates recognized losses for Twitter and Kraft Heinz settlements
-Fully dynamic implementation based on settlement notices
-"""
-
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
